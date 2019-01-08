@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:16.04 as build
 
 COPY SConstruct /
 
@@ -23,3 +23,12 @@ libgoogle-perftools-dev mercurial swig \
 && apt-get -y remove clang git mercurial make \
 && apt -y autoremove \
 && apt-get clean
+
+FROM ubuntu:16.04
+RUN apt-get update && apt-get -y install \
+    libgoogle-perftools-dev \
+    libpython-dev \
+&& apt-get clean
+
+COPY --from=build /gem5/ ./gem5/
+ENTRYPOINT ["/gem5/build/X86/gem5.fast"]
