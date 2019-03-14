@@ -10,3 +10,5 @@ RUN apt-get update \
 && apt-get -y remove git clang \
 && apt -y autoremove \
 && apt-get clean
+
+ENTRYPOINT [ "/home/ramulator/ramulator" ]

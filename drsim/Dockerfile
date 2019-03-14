@@ -5,7 +5,10 @@ RUN apt-get update \
 && wget http://lph.ece.utexas.edu/users/mjeong/drsim/drsim_032312.tar.bz2 \
 && tar xjf drsim_032312.tar.bz2 \
 && rm drsim_032312.tar.bz2 \
-&& cd drsim \
+&& mv drsim/ /home/ \
+&& cd /home/drsim \
 && make \
 && apt-get -y remove g++ make wget \
 && apt -y autoremove
+
+ENTRYPOINT [ "/home/drsim/drsim" ]
