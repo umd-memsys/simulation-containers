@@ -1,0 +1,11 @@
+--- makefile	2012-03-21 11:17:11.000000000 -0400
++++ makefile.clang	2019-03-14 13:23:07.112197858 -0400
+@@ -32,7 +32,7 @@
+ 
+ # commands
+ RM = rm -rf
+-CPP = g++
++CPP = clang++
+ MV = mv
+ AR = ar
+ ARFLAGS = rs
